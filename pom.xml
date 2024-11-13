@@ -8,6 +8,27 @@
 	<name>kafka-config</name>
 	<description>Kafka configuration for teachme platform.</description>
 
+	<url>https://github.com/TeachMe-CloudUS/teachme-kafka-config</url>
+	<scm>
+		<url>s://github.com/TeachMe-CloudUS/teachme-kafka-config</url>
+		<connection>scm:git:https://github.com/TeachMe-CloudUS/teachme-kafka-config.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:TeachMe-CloudUS/teachme-kafka-config.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/TeachMe-CloudUS/teachme-kafka-config</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<java.version>17</java.version>
 		<spring-boot.version>3.3.5</spring-boot.version>
