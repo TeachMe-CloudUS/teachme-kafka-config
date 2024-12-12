@@ -23,7 +23,7 @@ Add the `kafka-config` library as a dependency in your project's pom.xml:
 <dependency>
     <groupId>us.cloud.teachme</groupId>
     <artifactId>kafka-config</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -33,9 +33,9 @@ In your Spring Boot application’s `application.properties` or application.yml,
 
 ```properties
 # Kafka server configuration
-spring.kafka.bootstrap-servers=localhost:9092
+kafka-config.bootstrap-server=http://kafka:9092
 # The service name, e.g student-service for convention
-kafka.group-id=your-service-group
+kafka-config.group-id=your-service-group
 ```
 
 ### Usage
@@ -80,9 +80,9 @@ public class AppKafkaConfig {
 }
 ```
 
-3. Send messages to Topics:
+3. Publish Events to Topics:
 
-`KafkaProducerService` provides a straightforward way to send messages to Kafka topics. Autowire and use it in your service classes:
+`KafkaProducerService` provides a straightforward way to publish events to Kafka topics. Autowire and use it in your service classes:
 
 ```java
 package us.cloud.teachme.yourservice;
@@ -102,13 +102,13 @@ public class MessageService {
         this.kafkaProducerService = kafkaProducerService;
     }
 
-    public void sendMessage(String topic, String key, String message) {
-        kafkaProducerService.sendMessage(topic, key, message);
+    public void publishEvent(String topic, String key, Object event) {
+        kafkaProducerService.sendMessage(topic, key, event);
     }
 }
 ```
 
-4. Consume Messages:
+4. Consume Events:
 
 Listen to Topics using the `KafkaListener`-Annotation providing the Topic:
 
@@ -116,8 +116,8 @@ Listen to Topics using the `KafkaListener`-Annotation providing the Topic:
 ...
 
 @KafkaListener(topics = "topic1")
-public void consume(String message) {
-    System.out.println(message);
+public void consume(Object event) {
+    System.out.println(event);
 }
 
 ...

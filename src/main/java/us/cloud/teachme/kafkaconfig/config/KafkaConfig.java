@@ -17,7 +17,7 @@ import us.cloud.teachme.kafkaconfig.service.KafkaProducerService;
 public class KafkaConfig {
 
     @Bean
-    public KafkaProducerService kafkaProducerService(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaProducerService kafkaProducerService(KafkaTemplate<String, Object> kafkaTemplate) {
         return new KafkaProducerService(kafkaTemplate);
     }
 }

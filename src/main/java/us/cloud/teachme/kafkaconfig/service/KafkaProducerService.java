@@ -9,13 +9,13 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class KafkaProducerService {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public KafkaProducerService(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaProducerService(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public CompletableFuture<SendResult<String, String>> sendMessage(String topic, String message) {
-        return kafkaTemplate.send(topic, message);
+    public CompletableFuture<SendResult<String, Object>> publicEvent(String topic, Object event) {
+        return kafkaTemplate.send(topic, event);
     }
 }
